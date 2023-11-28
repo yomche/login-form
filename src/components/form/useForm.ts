@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useForm = () => {
-  const [formType, setFormType] = useState<"email" | "phone">("email");
+  const [formType, setFormType] = useState<"email" | "phone" | "code">("email");
   const [formFields, setFormFields] = useState({ email: "", password: "" });
   const [phoneField, setPhoneField] = useState("");
   const [formError, setFormError] = useState({ email: false, password: false });

@@ -1,9 +1,6 @@
 import styles from "./form.module.scss";
-import { Button } from "../button";
-import { InputPassword } from "../inputPassword";
-import { InputText } from "../inputText";
 import { useForm } from "./useForm";
-import { InputPhone } from "../inputPhone";
+import { EmailForm, PhoneForm, CodeForm } from "../forms";
 
 export const LoginForm = () => {
   const {
@@ -20,48 +17,35 @@ export const LoginForm = () => {
 
   return (
     <div className={styles.form}>
-      <h2>Login</h2>
-      <div className={styles.switch}>
-        via
-        <span
-          onClick={() =>
-            formType === "email" ? setFormType("phone") : setFormType("email")
-          }
-        >{`${formType === "email" ? " phone" : " e-mail"}`}</span>
-      </div>
-      {formType === "email" ? (
-        <>
-          <InputText
-            label="Email"
-            value={formFields.email}
-            format={/^([a-zA-Z0-9_.+-@])+/g}
-            onValueChange={(email) => onEmailChange("email", email)}
-            placeholder="Enter your e-mail"
-            error={formError.email}
-            errorMessage="Please enter valid email"
-          />
-          <InputPassword
-            value={formFields.password}
-            onValueChange={(password) => onPasswordChange("password", password)}
-            error={formError.password}
-            errorMessage="Password must contain more than 8 symbols"
-          />
-          <div className={styles.forget}>
-            <a>Forget Password?</a>
-          </div>
-          <Button disabled={!isValid}>Login</Button>
-        </>
-      ) : (
-        <>
-          <InputPhone
-            value={phoneField}
-            handleValueChange={(phone) => setPhoneField(phone)}
-          />
-          <div className={styles.button}>
-            <Button disabled={phoneField.length < 9}>Send code</Button>
-          </div>
-        </>
+      <h2>{formType !== "code" ? "Login" : "Code Confirmation"}</h2>
+      {formType !== "code" && (
+        <div className={styles.switch}>
+          via
+          <span
+            onClick={() =>
+              formType === "email" ? setFormType("phone") : setFormType("email")
+            }
+          >{`${formType === "email" ? " phone" : " e-mail"}`}</span>
+        </div>
       )}
+      {formType === "email" ? (
+        <EmailForm
+          formFields={formFields}
+          formError={formError}
+          onEmailChange={onEmailChange}
+          onPasswordChange={onPasswordChange}
+          isValid={isValid}
+          handleLogin={() => setFormType("code")}
+        />
+      ) : formType === "phone" ? (
+        <PhoneForm
+          phoneField={phoneField}
+          handlePhoneField={setPhoneField}
+          handleLogin={() => setFormType("code")}
+        />
+      ) : formType === "code" ? (
+        <CodeForm />
+      ) : null}
     </div>
   );
 };
