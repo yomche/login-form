@@ -27,6 +27,20 @@
   text-align: center;
 }
 
+a {
+  color      : var(--violet);
+  width      : fit-content;
+  font-weight: 600;
+  font-size  : 16px;
+  line-height: 22px;
+  transition : all 400ms ease;
+
+  &:hover {
+    color : var(--white);
+    cursor: pointer;
+  }
+}
+
 body {
   color              : var(--white);
   display            : flex;
@@ -41,17 +55,24 @@ body {
 }
 
 .container {
-  min-height   : 50vh;
-  min-width    : 300px;
-  width        : 35vw;
-  padding      : 60px 40px;
-  border       : 2px solid var(--white);
-  border-radius: 10px;
-  background   : var(--form-background);
+  min-height    : 50vh;
+  min-width     : 300px;
+  width         : 35vw;
+  padding       : 60px 40px;
+  border        : 2px solid var(--white);
+  border-radius : 10px;
+  background    : var(--form-background);
   backdrop-filter: blur(15px);
-  display      : grid;
+  display       : flex;
+  flex-direction: column;
 
   .register {
-    color: var(--violet);
+    display       : flex;
+    flex-direction: column;
+    place-items   : center;
+    color         : var(--violet);
+    font-weight   : 600;
+    font-size     : 16px;
+    line-height   : 22px;
   }
 }

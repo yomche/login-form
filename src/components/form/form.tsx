@@ -26,8 +26,8 @@ export const LoginForm = () => {
         error={formError.password}
         errorMessage="Password must contain more than 8 symbols"
       />
-      <div style={{ textAlign: "end", marginBottom: "10px" }}>
-        Forget Password?
+      <div className={styles.forget}>
+        <a>Forget Password?</a>
       </div>
       <Button disabled={!isValid}>Login</Button>
     </div>

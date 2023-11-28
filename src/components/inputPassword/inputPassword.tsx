@@ -46,6 +46,7 @@ export const InputPassword: FC<InputPasswordProps> = (props) => {
         autoComplete="new-password"
         onChange={onInputChange}
         placeholder={placeholder}
+        maxLength={36}
       />
       {error && errorMessage ? (
         <p className={styles.error}>{errorMessage}</p>

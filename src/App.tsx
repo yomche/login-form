@@ -6,7 +6,7 @@ function App() {
       <LoginForm />
       <div className="register">
         <div>Don't have an account?</div>
-        <div>Register</div>
+        <a>Register</a>
       </div>
     </div>
   );
