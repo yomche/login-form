@@ -4,14 +4,14 @@ import "./styles.css";
 
 interface MaskedPhoneProps {
   value?: string;
-  handleValueChange?: () => void;
+  handleValueChange?: (value: string) => void;
 }
 
 export const InputPhone = ({ value, handleValueChange }: MaskedPhoneProps) => {
   return (
     <>
       <PhoneInput
-        specialLabel={""}
+        specialLabel={"Phone"}
         country={"us"}
         value={value}
         onChange={handleValueChange}

@@ -14,6 +14,8 @@ export const LoginForm = () => {
     isValid,
     formType,
     setFormType,
+    phoneField,
+    setPhoneField,
   } = useForm();
 
   return (
@@ -51,7 +53,13 @@ export const LoginForm = () => {
         </>
       ) : (
         <>
-          <InputPhone />
+          <InputPhone
+            value={phoneField}
+            handleValueChange={(phone) => setPhoneField(phone)}
+          />
+          <div className={styles.button}>
+            <Button disabled={phoneField.length < 9}>Send code</Button>
+          </div>
         </>
       )}
     </div>
