@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useForm = () => {
+  const [formType, setFormType] = useState<"email" | "phone">("email");
   const [formFields, setFormFields] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState({ email: false, password: false });
 
@@ -39,5 +40,13 @@ export const useForm = () => {
     }
   }, [formFields]);
 
-  return { formFields, formError, onEmailChange, onPasswordChange, isValid };
+  return {
+    formFields,
+    formError,
+    onEmailChange,
+    onPasswordChange,
+    isValid,
+    formType,
+    setFormType,
+  };
 };
