@@ -8,7 +8,7 @@ export const LoginForm = () => {
     <div className={styles.form}>
       <h2>Login</h2>
       <InputText label="Email" placeholder="Enter your e-mail" />
-      <InputPassword label="Password" placeholder="Enter your password" />
+      <InputPassword />
       <div style={{ textAlign: "end", marginBottom: "10px" }}>
         Forget Password?
       </div>

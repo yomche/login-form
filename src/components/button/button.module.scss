@@ -3,10 +3,10 @@
   padding         : 11px 0;
   border-radius   : 10px;
   border          : none;
-  color           : #000;
+  color           : var(--violet);
   font-size       : 16px;
   font-weight     : 600;
-  background-color: #fff;
+  background-color: var(--white);
   cursor          : pointer;
 
   &[disabled] {

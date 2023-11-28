@@ -7,21 +7,17 @@ interface InputTextProps {
   type?: "text";
   id?: string;
   value?: string;
-  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
   onValueChange?: (value: string) => void;
   label?: string;
   placeholder?: string;
   error?: boolean;
   errorMessage?: string;
-  readonly?: boolean;
-  maxLength?: number;
   format?: RegExp;
 }
 
 export const InputText: FC<InputTextProps> = (props) => {
   const {
     value,
-    onChange,
     onValueChange,
     label,
     errorMessage,
@@ -29,13 +25,10 @@ export const InputText: FC<InputTextProps> = (props) => {
     id = "text",
     placeholder,
     type,
-    readonly,
-    maxLength,
     format,
   } = props;
 
   const onInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(evt);
     let currValue = evt.target.value;
     if (format) {
       currValue = currValue.match(format)?.[0] ?? "";
@@ -53,12 +46,9 @@ export const InputText: FC<InputTextProps> = (props) => {
         value={value}
         onChange={onInputChange}
         placeholder={placeholder}
-        readOnly={readonly}
-        autoComplete="off"
-        maxLength={maxLength}
       />
       {error && errorMessage ? (
-        <p className={styles.errorMessage}>{errorMessage}</p>
+        <p className={styles.error}>{errorMessage}</p>
       ) : null}
       <span className={styles.icon}>
         <FaUser />

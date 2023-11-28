@@ -6,28 +6,22 @@ import styles from "./inputPassword.module.scss";
 interface InputPasswordProps {
   id?: string;
   value?: string;
-  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
   onValueChange?: (value: string) => void;
   label?: string;
   placeholder?: string;
   error?: boolean;
   errorMessage?: string;
-  messageText?: string;
-  maxLength?: number;
 }
 
 export const InputPassword: FC<InputPasswordProps> = (props) => {
   const {
     value,
-    onChange,
     onValueChange,
-    label = "Пароль",
+    label = "Password",
     errorMessage,
     error,
-    messageText,
-    maxLength,
     id = "password",
-    placeholder = "Ввести пароль",
+    placeholder = "Enter your password",
   } = props;
   const [show, setShow] = useState(false);
 
@@ -36,7 +30,6 @@ export const InputPassword: FC<InputPasswordProps> = (props) => {
   };
 
   const onInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(evt);
     onValueChange?.(evt.target.value);
   };
 
@@ -51,12 +44,9 @@ export const InputPassword: FC<InputPasswordProps> = (props) => {
         autoComplete="new-password"
         onChange={onInputChange}
         placeholder={placeholder}
-        maxLength={maxLength}
       />
       {error && errorMessage ? (
-        <p className={styles.errorMessage}>{errorMessage}</p>
-      ) : messageText ? (
-        <p className={styles.textMessage}>{messageText}</p>
+        <p className={styles.error}>{errorMessage}</p>
       ) : null}
       <span className={styles.icon} onClick={togglePassword}>
         {show ? <FaLockOpen /> : <FaLock />}
