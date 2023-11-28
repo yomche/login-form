@@ -3,6 +3,7 @@
   line-height      : 1.5;
   font-weight      : 400;
   --violet         : #58509d;
+  --light-violet   : #BCB9D7;
   --white          : #fff;
   --black          : #000;
   --error          : #da6215;
@@ -40,14 +41,15 @@ body {
 }
 
 .container {
-  min-height    : 50vh;
-  padding       : 60px 40px;
-  border        : 2px solid var(--white);
-  border-radius : 10px;
-  background    : var(--form-background);
+  min-height   : 50vh;
+  min-width    : 300px;
+  width        : 35vw;
+  padding      : 60px 40px;
+  border       : 2px solid var(--white);
+  border-radius: 10px;
+  background   : var(--form-background);
   backdrop-filter: blur(15px);
-  display       : flex;
-  flex-direction: column;
+  display      : grid;
 
   .register {
     color: var(--violet);

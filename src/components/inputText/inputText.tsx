@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, useState } from "react";
 import cn from "classnames";
 import { FaUser } from "react-icons/fa";
 import styles from "./inputText.module.scss";
@@ -15,18 +15,18 @@ interface InputTextProps {
   format?: RegExp;
 }
 
-export const InputText: FC<InputTextProps> = (props) => {
-  const {
-    value,
-    onValueChange,
-    label,
-    errorMessage,
-    error,
-    id = "text",
-    placeholder,
-    type,
-    format,
-  } = props;
+export const InputText = ({
+  value,
+  onValueChange,
+  label,
+  errorMessage,
+  error,
+  id = "text",
+  placeholder,
+  type,
+  format,
+}: InputTextProps) => {
+  const [hasFocus, setHasFocus] = useState(false);
 
   const onInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
     let currValue = evt.target.value;
@@ -40,17 +40,26 @@ export const InputText: FC<InputTextProps> = (props) => {
     <div className={styles.container}>
       {label ? <label htmlFor={id}>{label}</label> : null}
       <input
+        onFocus={() => setHasFocus(true)}
+        onBlur={() => setHasFocus(false)}
         id={id}
         className={cn(error && styles.error)}
         type={type}
         value={value}
         onChange={onInputChange}
         placeholder={placeholder}
+        autoComplete="false"
       />
       {error && errorMessage ? (
         <p className={styles.error}>{errorMessage}</p>
       ) : null}
-      <span className={styles.icon}>
+      <span
+        className={cn(
+          styles.icon,
+          hasFocus && styles.focus,
+          error && styles.iconError
+        )}
+      >
         <FaUser />
       </span>
     </div>

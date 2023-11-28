@@ -24,7 +24,7 @@ export const InputPassword: FC<InputPasswordProps> = (props) => {
     placeholder = "Enter your password",
   } = props;
   const [show, setShow] = useState(false);
-
+  const [hasFocus, setHasFocus] = useState(false);
   const togglePassword = () => {
     setShow((prev) => !prev);
   };
@@ -37,6 +37,8 @@ export const InputPassword: FC<InputPasswordProps> = (props) => {
     <div className={styles.container}>
       {label ? <label htmlFor={id}>{label}</label> : null}
       <input
+        onFocus={() => setHasFocus(true)}
+        onBlur={() => setHasFocus(false)}
         id={id}
         className={cn(error && styles.error)}
         type={show ? "text" : "password"}
@@ -48,7 +50,14 @@ export const InputPassword: FC<InputPasswordProps> = (props) => {
       {error && errorMessage ? (
         <p className={styles.error}>{errorMessage}</p>
       ) : null}
-      <span className={styles.icon} onClick={togglePassword}>
+      <span
+        className={cn(
+          styles.icon,
+          hasFocus && styles.focus,
+          error && styles.iconError
+        )}
+        onClick={togglePassword}
+      >
         {show ? <FaLockOpen /> : <FaLock />}
       </span>
     </div>

@@ -3,15 +3,21 @@
   padding         : 11px 0;
   border-radius   : 10px;
   border          : none;
-  color           : var(--violet);
   font-size       : 16px;
   font-weight     : 600;
-  background-color: var(--white);
+  color           : var(--white);
+  background-color: var(--violet);
   cursor          : pointer;
+  transition      : all 400ms ease;
+
+  &:hover {
+    color           : var(--violet);
+    background-color: var(--white);
+  }
 
   &[disabled] {
-    color           : var(--gray);
-    background-color: var(--light-gray);
+    color           : var(--white);
+    background-color: var(--light-violet);
     cursor          : auto;
   }
 }
