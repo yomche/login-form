@@ -60,8 +60,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  min-width: 216px;
-  width: calc(35vw - 80px);
+  min-width: 236px;
+  width: calc(35vw - 60px);
 }
 
 .react-tel-input .country-list .country {
@@ -69,6 +69,10 @@
   align-items: center;
   justify-content: start;
   color: #000;
+}
+
+.react-tel-input .country-list .country-name {
+  text-align: start;
 }
 
 ::-webkit-scrollbar {
