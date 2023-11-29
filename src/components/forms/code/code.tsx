@@ -1,11 +1,17 @@
 import { useCode } from "./useCode";
+import { Button } from "../../button";
 import styles from "./code.module.scss";
 import "./styles.css";
-export const CodeForm = () => {
-  const { digitsState, handleChange, handleKeyDown } = useCode();
+
+export const CodeForm = ({ codeData }: { codeData: string }) => {
+  const { code, digitsState, handleChange, handleKeyDown } = useCode();
 
   return (
     <div className={styles.container}>
+      <div className={styles.message}>
+        The code has been sent to you via <br />
+        <span>{codeData}</span>
+      </div>
       <div className={styles.input}>
         {digitsState.map((digitState, idx) => {
           return (
@@ -19,6 +25,9 @@ export const CodeForm = () => {
             />
           );
         })}
+      </div>
+      <div className={styles.button}>
+        <Button disabled={code?.length !== 4}>Send code</Button>
       </div>
     </div>
   );

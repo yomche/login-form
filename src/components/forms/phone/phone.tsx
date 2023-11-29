@@ -17,7 +17,7 @@ export const PhoneForm = ({
     <>
       <InputPhone
         value={phoneField}
-        handleValueChange={(phone) => handlePhoneField(phone)}
+        handleValueChange={(phone) => handlePhoneField("+" + phone)}
       />
       <div className={styles.button}>
         <Button disabled={phoneField.length < 9} onClick={handleLogin}>
