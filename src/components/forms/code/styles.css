@@ -1,0 +1,17 @@
+.code-digit {
+  background: transparent;
+  border-bottom: 2px solid #fff;
+  width: 100%;
+  color: #fff;
+  max-width: 40px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 6px;
+  transition: all 400ms ease;
+}
+
+.code-digit:focus {
+  color: #58509d;
+  border-bottom: 2px solid #58509d;
+}
