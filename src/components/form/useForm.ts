@@ -21,15 +21,15 @@ export const useForm = () => {
 
   const onEmailChange = (name: string, value: string) => {
     !isEmailValid(value)
-      ? setFormError({ ...formError, email: true })
-      : setFormError({ ...formError, email: false });
+      ? setFormError((prev) => ({ ...prev, email: true }))
+      : setFormError((prev) => ({ ...prev, email: false }));
     onFormChange(name, value);
   };
 
   const onPasswordChange = (name: string, value: string) => {
     value.length < 8
-      ? setFormError({ ...formError, password: true })
-      : setFormError({ ...formError, password: false });
+      ? setFormError((prev) => ({ ...prev, password: true }))
+      : setFormError((prev) => ({ ...prev, password: false }));
     onFormChange(name, value);
   };
 
@@ -40,9 +40,10 @@ export const useForm = () => {
 
   useEffect(() => {
     if (formFields.email === "") {
-      setFormError({ ...formError, email: false });
-    } else if (formFields.password === "") {
-      setFormError({ ...formError, password: false });
+      setFormError((prev) => ({ ...prev, email: false }));
+    }
+    if (formFields.password === "") {
+      setFormError((prev) => ({ ...prev, password: false }));
     }
   }, [formFields]);
 
