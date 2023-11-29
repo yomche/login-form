@@ -6,16 +6,17 @@ export const useCode = () => {
   const [digit2, setDigit2] = useState<string>("");
   const [digit3, setDigit3] = useState<string>("");
   const [digit4, setDigit4] = useState<string>("");
+  const digitState = [
+    { digit: digit1, setDigit: setDigit1 },
+    { digit: digit2, setDigit: setDigit2 },
+    { digit: digit3, setDigit: setDigit3 },
+    { digit: digit4, setDigit: setDigit4 },
+  ];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const digitsState: { digit: string; setDigit: (value: string) => void }[] =
     [];
 
   for (let i = 0; i < 4; i++) {
-    const digitState = [
-      { digit: digit1, setDigit: setDigit1 },
-      { digit: digit2, setDigit: setDigit2 },
-      { digit: digit3, setDigit: setDigit3 },
-      { digit: digit4, setDigit: setDigit4 },
-    ];
     digitsState.push({
       digit: digitState[i].digit,
       setDigit: digitState[i].setDigit,
@@ -74,5 +75,12 @@ export const useCode = () => {
     } else setCode(null);
   }, [digitsState]);
 
-  return { code, digitsState, handleChange, handleKeyDown };
+  const handleClearCode = () => {
+    setDigit1("");
+    setDigit2("");
+    setDigit3("");
+    setDigit4("");
+  };
+
+  return { code, digitsState, handleChange, handleKeyDown, handleClearCode };
 };
