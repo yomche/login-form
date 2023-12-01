@@ -37,8 +37,8 @@ export const EmailForm = ({
         error={formError.password}
         errorMessage="Password must contain more than 8 symbols"
       />
-      <div className={styles.forget}>
-        <a>Forget Password?</a>
+      <div className={styles.forgot}>
+        <a>Forgot Password?</a>
       </div>
       <Button disabled={!isValid} onClick={handleLogin}>
         Login
